@@ -9,7 +9,7 @@ const router = useRouter()
 </script>
 
 <template>
-    <div class="w-full grid grid-cols-6 gap-5">
+    <div class="w-full grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 xl:gap-5">
         <Card 
             v-for="anime in props.apiData" :key="anime.mal_id"
             class="group relative bg-transparent border-none text-white p-2 items-center cursor-pointer"

@@ -1,16 +1,35 @@
 <!-- eslint-disable @typescript-eslint/no-explicit-any -->
 <script setup lang="ts">
 
-defineProps<{
-    characters : any[]
+const { characters } = defineProps<{
+    characters: any[]
 }>()
 
 </script>
 
 <template>
-    <div class="w-full grid grid-cols-2 md:grid-cols-5">
-        <Card v-for="char in characters" :key="char.mal_id">
-            
+    <div class="w-full flex items-center justify-between mb-5">
+        <p class="text-orange-600 font-bold text-lg">
+            Character <span class="text-white">({{ characters.length }})</span>
+        </p>
+    </div>
+    <div v-if="characters.length > 0" class="w-full grid grid-cols-2 md:grid-cols-5 gap-2">
+        <Card v-for="char in characters" :key="char.mal_id" class="bg-[#252525] border-orange-600 relative">
+            <p class="font-semibold text-sm md:text-lg text-orange-600 w-full text-start px-5">Character details :</p>
+            <div class="w-full flex flex-col items-center px-5">
+                <img :src="char.character.images.webp.image_url" :alt="char.character.name" class="w-full h-40 md:h-56 rounded-full object-cover">
+            </div>
+            <div class="w-full px-5">
+                <p class="text-white font-semibold text-[12px] md:text-[15px]">Name : <span class="text-orange-600 font-bold">{{ char.character.name }}</span></p>
+                <p class="text-orange-600 font-semibold text-[12px] md:text-[15px]">Role : <span class="text-white font-bold">{{ char.role }}</span></p>
+            </div>
+            <div class="w-full flex px-5 items-center gap-2 justify-center mt-2">
+                <Heart class="w-5 h-5 text-orange-600" />  
+                <p class="text-white font-semibold text-[12px] md:text-[15px]">{{ char.favorites }} Favorited</p>
+            </div>
+            <NuxtLink :to="char.character.url" class="absolute top-2 right-2">
+                <ExternalLink class="w-5 h-5 text-orange-600"/>
+            </NuxtLink>
         </Card>
     </div>
 </template>

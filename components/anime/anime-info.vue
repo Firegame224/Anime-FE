@@ -4,8 +4,8 @@
 <script setup lang="ts">
 
 const { anime, character } = defineProps<{
-    anime : Record<string, any>,
-    character : any[]
+    anime: Record<string, any>,
+    character: any[]
 }>()
 
 const airedStart = `${anime.aired.prop.from.day}-${anime.aired.prop.from.month}-${anime.aired.prop.from.year}`
@@ -47,8 +47,9 @@ const airedEnd = anime.aired.prop.to ? `${anime.aired.prop.to.day}-${anime.aired
                 </p>
                 <!-- Genre anime -->
                 <section class="w-full flex gap-3 my-5">
-                    <div v-for="genre in anime.genres" :key="genre.mal_id"
-                        class="text-white p-3  bg-[#252525] rounded-md flex items-center justify-center hover:opacity-60 cursor-pointer transition duration-700">
+                    <div 
+                    v-for="genre in anime.genres" :key="genre.mal_id"
+                    class="text-white p-3  bg-[#252525] rounded-md flex items-center justify-center hover:opacity-60 cursor-pointer transition duration-700">
                         <p class="text-white font-semibold text-sm">{{ genre.name }}</p>
                     </div>
                 </section>
@@ -63,20 +64,13 @@ const airedEnd = anime.aired.prop.to ? `${anime.aired.prop.to.day}-${anime.aired
             <p class="text-white text-[16px] drop-shadow-2xl drop-shadow-white text-justify">{{ anime.synopsis }}</p>
         </div>
         <div class="w-full flex flex-col md:flex-row items-center justify-between gap-3">
-            <aside class="w-full md:w-1/2 flex flex-col gap-5">
-                <p class="text-orange-600 font-bold text-xl">Anime Trailer :</p>
-                <div class="w-full flex items-center justify-center">
-                    <iframe v-if="anime.trailer?.embed_url" class="w-full aspect-video rounded-md"
-                        :src="anime.trailer.embed_url" />
-                    <p v-else class="text-white">Trailer tidak tersedia</p>
-                </div>
-            </aside>
+            <AnimeTrailer :url="anime.trailer.embed_url" />
             <aside class="w-1/2 ">
-
+                {{ }}
             </aside>
         </div>
         <div class="w-full flex flex-col">
-            <AnimeCharacterCard :characters="character"/>
+            <AnimeCharacterCard :characters="character" />
         </div>
     </section>
 </template>
