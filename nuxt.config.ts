@@ -3,8 +3,12 @@ import tailwindcss from '@tailwindcss/vite'
 
 export default defineNuxtConfig({
   compatibilityDate: '2025-05-15',
+  icon: {
+    mode: 'css',
+    cssLayer: "base"
+  },
   devtools: { enabled: true },
-  css : ['~/assets/css/tailwind.css'],
+  css: ['~/assets/css/tailwind.css'],
   modules: [
     'shadcn-nuxt',
     '@nuxt/eslint',
@@ -14,12 +18,12 @@ export default defineNuxtConfig({
     '@nuxt/scripts',
     'shadcn-nuxt'
   ],
-  shadcn : {
-    prefix : '',
-    componentDir : './components/ui'
+  shadcn: {
+    prefix: '',
+    componentDir: './components/ui'
   },
-  vite : {
-    plugins : [
+  vite: {
+    plugins: [
       tailwindcss()
     ]
   }

@@ -4,6 +4,7 @@
     "": {
       "name": "nuxt-app",
       "dependencies": {
+        "@iconify/vue": "^5.0.0",
         "@nuxt/eslint": "1.4.1",
         "@nuxt/fonts": "0.11.4",
         "@nuxt/icon": "1.13.0",
@@ -16,6 +17,7 @@
         "class-variance-authority": "^0.7.1",
         "clsx": "^2.1.1",
         "eslint": "^9.0.0",
+        "lucide-vue": "^0.517.0",
         "lucide-vue-next": "^0.517.0",
         "nuxt": "^3.17.5",
         "reka-ui": "^2.3.1",
@@ -1300,6 +1302,8 @@
     "logform": ["logform@2.7.0", "", { "dependencies": { "@colors/colors": "1.6.0", "@types/triple-beam": "^1.3.2", "fecha": "^4.2.0", "ms": "^2.1.1", "safe-stable-stringify": "^2.3.1", "triple-beam": "^1.3.0" } }, "sha512-TFYA4jnP7PVbmlBIfhlSe+WKxs9dklXMTEGcBCIvLhE/Tn3H6Gk1norupVW7m5Cnd4bLcr08AytbyV/xj7f/kQ=="],
 
     "lru-cache": ["lru-cache@10.4.3", "", {}, "sha512-JNAzZcXrCt42VGLuYz0zfAzDfAvJWW6AfYlDBQyDV5DClI2m5sAmK+OIO7s59XfsRsWHp02jAJrRadPRGTt6SQ=="],
+
+    "lucide-vue": ["lucide-vue@0.517.0", "", { "peerDependencies": { "vue": "^2.6.12" } }, "sha512-ctSLCEslH5DchFq+/jku2cjQoBago2Q8EkK5i32hZaFVPV/6iUe1NjycwmIQLdprvEhnvNQxJbmEHUO5v41myw=="],
 
     "lucide-vue-next": ["lucide-vue-next@0.517.0", "", { "peerDependencies": { "vue": ">=3.0.1" } }, "sha512-kTrZCEaK2C918CCCeLdI6kTj8eSx1fXKN9bQM/eFpRi5E1be4/g1TDsKhorZLfXdpzpsub3zBtAe4btQsOW23A=="],
 
