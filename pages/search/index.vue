@@ -25,7 +25,7 @@ const filteredAnime = computed(() => data.value.data)
                 <ArrowBigLeft />
             </Button>
         </div>
-        <div v-if="filteredAnime > 0" class="w-full">
+        <div v-if="filteredAnime.length > 0" class="w-full">
             <AnimeCard :api-data="filteredAnime" />
         </div>
         <div v-if="filteredAnime.length === 0" class="w-full min-h-screen flex items-center justify-center">
