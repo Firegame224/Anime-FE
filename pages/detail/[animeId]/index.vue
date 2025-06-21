@@ -13,7 +13,7 @@ const character = (characterResponse.data.value as any).data
 
 <template>
     <div class="w-full">
-        <AnimeHeader />
+        <AnimeHeader text="Detail anime page" />
         <div class="w-full min-h-screen p-5 pt-16">
             <AnimeInfo :anime="anime" :character="character"/>
         </div>

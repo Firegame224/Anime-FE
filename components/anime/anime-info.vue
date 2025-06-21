@@ -42,6 +42,7 @@ const airedEnd = anime.aired.prop.to ? `${anime.aired.prop.to.day}-${anime.aired
                     <p class="text-orange-600"> ({{ anime.scored_by }})</p>
                 </div>
                 <p class="font-semibold text-white text-sm ">Episodes : {{ anime.episodes }}Eps</p>
+                <p class="font-semibold text-white text-sm ">Type : {{ anime.type }}</p>
                 <p class="font-semibold text-white text-sm ">
                     Source : <span class="text-orange-600 font-bold text-sm">{{ anime.source }}</span>
                 </p>

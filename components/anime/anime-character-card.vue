@@ -13,7 +13,7 @@ const { characters } = defineProps<{
             Character <span class="text-white">({{ characters.length }})</span>
         </p>
     </div>
-    <div v-if="characters.length > 0" class="w-full grid grid-cols-2 md:grid-cols-5 gap-2">
+    <div v-if="characters.length > 0" class="w-full grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2">
         <Card v-for="char in characters" :key="char.mal_id" class="bg-[#252525] border-orange-600 relative">
             <p class="font-semibold text-sm md:text-lg text-orange-600 w-full text-start px-5">Character details :</p>
             <div class="w-full flex flex-col items-center px-5">
