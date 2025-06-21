@@ -5,9 +5,12 @@ const router = useRouter()
 
 const page = computed(() => Number(route.query.page) || 1)
 const url = computed(() => `https://api.jikan.moe/v4/top/anime?page=${page.value}`)
-const { data, refresh } = await useFetch(url)
 
-const topAnime = computed ( () => data.value as any )
+const { data, refresh } = await useFetch(url, {
+    immediate: true
+})
+
+const topAnime = computed(() => data.value as any)
 const lastPage = computed(() => topAnime?.value.pagination?.last_visible_page || 1)
 
 const scrollToTop = () => {
