@@ -42,8 +42,14 @@ watch(() => route.query.page, () => refresh())
                 <ArrowBigLeft />
             </Button>
         </div>
-        <div class="w-full">
+        <div v-if="topAnime.data.length > 0" class="w-full">
             <AnimeCard :api-data="topAnime.data" />
+        </div>
+        <div v-if="topAnime.data.length === 0" class="w-full min-h-screen flex items-center justify-center">
+            <label class="flex items-center w-full justify-center gap-2 text-orange-600">
+                <Loader class="w-5 h-5 animate-spin"/>
+                <p>Loading</p>
+            </label>
         </div>
         <div class="w-full flex items-center justify-center gap-5">
             <Button :disabled="page === 1" @click="prevPage">Prev</Button>

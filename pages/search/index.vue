@@ -9,7 +9,7 @@ const url = computed(() => `https://api.jikan.moe/v4/anime?q=${title.value}`)
 
 const { data } = await useFetch(url, {
     immediate: true,
-    watch : url.value
+    watch: url.value
 })
 
 const filteredAnime = computed(() => data.value.data)
@@ -25,8 +25,13 @@ const filteredAnime = computed(() => data.value.data)
                 <ArrowBigLeft />
             </Button>
         </div>
-        <div class="w-full">
+        <div v-if="filteredAnime > 0" class="w-full">
             <AnimeCard :api-data="filteredAnime" />
+        </div>
+        <div v-if="filteredAnime.length === 0" class="w-full min-h-screen flex items-center justify-center">
+            <label class="flex items-center w-full justify-center gap-2 text-orange-600">
+                <p class="text-xl">Tidak ada hasil ditemukan</p>
+            </label>
         </div>
     </div>
 </template>

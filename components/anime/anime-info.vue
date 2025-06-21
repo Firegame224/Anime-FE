@@ -7,28 +7,28 @@ const { anime, character } = defineProps<{
     character: Character[]
 }>()
 
-const airedStart = `${anime.aired.prop.from.day}-${anime.aired.prop.from.month}-${anime.aired.prop.from.year}`
-const airedEnd = anime.aired.prop.to ? `${anime.aired.prop.to.day}-${anime.aired.prop.to.month}-${anime.aired.prop.to.year}` : "Ongoing"
+const airedStart = anime.aired.prop.from ? `${anime.aired.prop.from.day}-${anime.aired.prop.from.month}-${anime.aired.prop.from.year}` : "unknown"
+const airedEnd = anime.aired.prop.to ? `${anime.aired.prop.to.day}-${anime.aired.prop.to.month}-${anime.aired.prop.to.year}` : "Unknown"
 const box = [
     {
         name: "Episodes",
-        value: anime.episodes
+        value: anime.episodes ?? "Unknown"
     },
     {
         name: "Type",
-        value: anime.type
+        value: anime.type ?? "Unknown"
     },
     {
         name: "Source",
-        value: anime.source
+        value: anime.source ?? "Unknown"
     },
     {
         name: "Score",
-        value: anime.score
+        value: anime.score ?? "Unknown"
     },
     {
         name: "Status",
-        value: anime.status
+        value: anime.status ?? "Unknown"
     }
 ]
 
@@ -63,7 +63,7 @@ const box = [
                     <Star class="w-5 h-5 text-white fill-orange-600" />
                     <p class="text-orange-600"> ({{ anime.scored_by }})</p>
                 </div>
-                <p class="font-semibold text-white text-sm ">Episodes : {{ anime.episodes }}Eps</p>
+                <p class="font-semibold text-white text-sm">Episodes : {{ anime.episodes }}Eps</p>
                 <p class="font-semibold text-white text-sm ">Type : {{ anime.type }}</p>
                 <p class="font-semibold text-white text-sm ">
                     Source : <span class="text-orange-600 font-bold text-sm">{{ anime.source }}</span>
@@ -91,13 +91,14 @@ const box = [
                     <p class="text-white font-semibold text-sm">{{ genre.name }}</p>
                 </div>
             </section>
-            <section class="w-full flex flex-row gap-2">
-                <div v-for="item in box" :key="item.name" class="border-white border w-24 rounded">
+            <section class="w-full flex overflow-x-auto overflow-y-hidden gap-2">
+                <div v-for="item in box" :key="item.name" class="border-white border min-w-24 rounded">
                     <div
                         class="w-full flex font-semibold border-white border text-orange-600 justify-center items-center p-2">
                         <p>{{ item.name }}</p>
                     </div>
-                    <div class="w-full p-2 flex items-center justify-center">
+                    <div 
+                        class="w-full p-2 flex items-center justify-center">
                         <p class="text-white text-sm text-center">{{ item.value }}</p>
                     </div>
                 </div>
