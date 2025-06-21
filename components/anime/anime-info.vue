@@ -7,8 +7,8 @@ const { anime, character } = defineProps<{
     character: Character[]
 }>()
 
-const airedStart = anime.aired.prop.from ? `${anime.aired.prop.from.day}-${anime.aired.prop.from.month}-${anime.aired.prop.from.year}` : "unknown"
-const airedEnd = anime.aired.prop.to ? `${anime.aired.prop.to.day}-${anime.aired.prop.to.month}-${anime.aired.prop.to.year}` : "Unknown"
+const airedStart = anime.aired.prop.from ? `${anime.aired.prop.from.day !== null ? anime.aired.prop.from.day : "?"}-${anime.aired.prop.from.month !== null ? anime.aired.prop.from.month : "?"}-${anime.aired.prop.from.year !== null ? anime.aired.prop.from.year : "?"}` : "unknown"
+const airedEnd = anime.aired.prop.to ? `${anime.aired.prop.to.day !== null ? anime.aired.prop.to.day : "?"}-${anime.aired.prop.to.month !== null ? anime.aired.prop.to.month : "?"}-${anime.aired.prop.to.year !== null ? anime.aired.prop.to.year : "?"}` : "Unknown"
 const box = [
     {
         name: "Episodes",
@@ -41,7 +41,7 @@ const box = [
         <p class="font-semibold text-white text-sm absolute right-5 bottom-5 z-20 flex items-center gap-1">
             <Calendar class="w-5 h-5 text-orange-600" />
             {{ airedStart }}
-            <span class="text-orange-600 font-bold text-sm">To</span>
+            <span v-if="airedStart !==''" class="text-orange-600 font-bold text-sm">To</span>
             {{ airedEnd }}
         </p>
         <!-- Gambar Cover -->
@@ -70,8 +70,7 @@ const box = [
                 </p>
                 <!-- Genre anime -->
                 <section class="w-full flex gap-3 my-5">
-                    <div 
-                        v-for="genre in anime.genres" :key="genre.mal_id"
+                    <div v-for="genre in anime.genres" :key="genre.mal_id"
                         class="text-white p-3  bg-[#252525] rounded-md flex items-center justify-center hover:opacity-60 transition duration-700">
                         <p class="text-white font-semibold text-sm">{{ genre.name }}</p>
                     </div>
@@ -84,9 +83,8 @@ const box = [
     <section class="w-full flex flex-col p-5 gap-5">
         <div class="w-full flex flex-col  md:hidden">
             <p class="text-orange-600 text-2xl font-bold">{{ anime.title }}</p>
-            <section class="w-full flex gap-3 my-5">
-                <div 
-                    v-for="genre in anime.genres" :key="genre.mal_id"
+            <section class="w-full flex overflow-x-auto overflow-y-hidden gap-3 my-5">
+                <div v-for="genre in anime.genres" :key="genre.mal_id"
                     class="text-white p-3 bg-[#252525] rounded-md flex items-center justify-center hover:opacity-60 cursor-pointer transition duration-700">
                     <p class="text-white font-semibold text-sm">{{ genre.name }}</p>
                 </div>
@@ -97,8 +95,7 @@ const box = [
                         class="w-full flex font-semibold border-white border text-orange-600 justify-center items-center p-2">
                         <p>{{ item.name }}</p>
                     </div>
-                    <div 
-                        class="w-full p-2 flex items-center justify-center">
+                    <div class="w-full p-2 flex items-center justify-center">
                         <p class="text-white text-sm text-center">{{ item.value }}</p>
                     </div>
                 </div>
