@@ -3,9 +3,10 @@
 
 <template>
     <div class="w-full min-h-screen flex flex-col bg-black">
-        <navbar />
+        <Navbar />
         <div class="w-full">
             <slot />
         </div>
+        <Footer/>
     </div>
 </template>

@@ -1,15 +1,37 @@
-<!-- eslint-disable @typescript-eslint/no-explicit-any -->
-<!-- eslint-disable vue/require-default-prop -->
-<!-- eslint-disable vue/require-prop-types -->
 <script setup lang="ts">
+import type { Anime, Character } from '~/lib/types/anime';
+
 
 const { anime, character } = defineProps<{
-    anime: Record<string, any>,
-    character: any[]
+    anime: Anime,
+    character: Character[]
 }>()
 
 const airedStart = `${anime.aired.prop.from.day}-${anime.aired.prop.from.month}-${anime.aired.prop.from.year}`
 const airedEnd = anime.aired.prop.to ? `${anime.aired.prop.to.day}-${anime.aired.prop.to.month}-${anime.aired.prop.to.year}` : "Ongoing"
+const box = [
+    {
+        name: "Episodes",
+        value: anime.episodes
+    },
+    {
+        name: "Type",
+        value: anime.type
+    },
+    {
+        name: "Source",
+        value: anime.source
+    },
+    {
+        name: "Score",
+        value: anime.score
+    },
+    {
+        name: "Status",
+        value: anime.status
+    }
+]
+
 </script>
 
 <template>
@@ -49,8 +71,8 @@ const airedEnd = anime.aired.prop.to ? `${anime.aired.prop.to.day}-${anime.aired
                 <!-- Genre anime -->
                 <section class="w-full flex gap-3 my-5">
                     <div 
-                    v-for="genre in anime.genres" :key="genre.mal_id"
-                    class="text-white p-3  bg-[#252525] rounded-md flex items-center justify-center hover:opacity-60 cursor-pointer transition duration-700">
+                        v-for="genre in anime.genres" :key="genre.mal_id"
+                        class="text-white p-3  bg-[#252525] rounded-md flex items-center justify-center hover:opacity-60 transition duration-700">
                         <p class="text-white font-semibold text-sm">{{ genre.name }}</p>
                     </div>
                 </section>
@@ -60,6 +82,27 @@ const airedEnd = anime.aired.prop.to ? `${anime.aired.prop.to.day}-${anime.aired
 
     <!-- Konten Full -->
     <section class="w-full flex flex-col p-5 gap-5">
+        <div class="w-full flex flex-col  md:hidden">
+            <p class="text-orange-600 text-2xl font-bold">{{ anime.title }}</p>
+            <section class="w-full flex gap-3 my-5">
+                <div 
+                    v-for="genre in anime.genres" :key="genre.mal_id"
+                    class="text-white p-3 bg-[#252525] rounded-md flex items-center justify-center hover:opacity-60 cursor-pointer transition duration-700">
+                    <p class="text-white font-semibold text-sm">{{ genre.name }}</p>
+                </div>
+            </section>
+            <section class="w-full flex flex-row gap-2">
+                <div v-for="item in box" :key="item.name" class="border-white border w-24 rounded">
+                    <div
+                        class="w-full flex font-semibold border-white border text-orange-600 justify-center items-center p-2">
+                        <p>{{ item.name }}</p>
+                    </div>
+                    <div class="w-full p-2 flex items-center justify-center">
+                        <p class="text-white text-sm text-center">{{ item.value }}</p>
+                    </div>
+                </div>
+            </section>
+        </div>
         <div class="w-full flex flex-col items-start justify-center gap-5">
             <p class="text-xl font-bold text-orange-600">Sinopsis :</p>
             <p class="text-white text-[16px] drop-shadow-2xl drop-shadow-white text-justify">{{ anime.synopsis }}</p>

@@ -1,8 +1,9 @@
-<!-- eslint-disable @typescript-eslint/no-explicit-any -->
 <script setup lang="ts">
+import type { Character } from '~/lib/types/anime';
+
 
 const { characters } = defineProps<{
-    characters: any[]
+    characters: Character[]
 }>()
 
 </script>

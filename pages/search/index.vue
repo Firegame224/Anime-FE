@@ -11,6 +11,7 @@ const { data } = await useFetch(url, {
     immediate: true,
     watch : url.value
 })
+
 const filteredAnime = computed(() => data.value.data)
 
 </script>
